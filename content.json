@@ -1,0 +1,12 @@
+[
+    {
+        "id": "page_a",
+        "title": "",
+        "description": "",
+        "file_name": "page_a.json",
+        "background": {
+            "type": "solid_color",
+            "color": "#F90"
+        }
+    }
+]

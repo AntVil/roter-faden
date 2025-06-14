@@ -1,0 +1,54 @@
+[
+    {
+        "type": "center_image",
+        "file_name": "",
+        "alternative_text": "",
+        "name": "",
+        "description": ""
+    },
+    {
+        "type": "center_text",
+        "heading": "",
+        "text": ""
+    },
+    {
+        "type": "thread_center_image_horizontal",
+        "file_name": "",
+        "alternative_text": "",
+        "name": "",
+        "description": ""
+    },
+    {
+        "type": "thread_color_transition",
+        "color": ""
+    },
+    {
+        "type": "thread_link_pages_horizontal",
+        "pages": [
+            {
+                "name": "",
+                "description": "",
+                "image": ""
+            }
+        ]
+    },
+    {
+        "type": "thread_switch_side"
+    },
+    {
+        "type": "list_enumerated",
+        "items": [
+            "abc",
+            "def"
+        ]
+    },
+    {
+        "type": "thread_switch_side_offscreen"
+    },
+    {
+        "type": "thread_link_pages_vertical",
+        "pages": [
+            "page_a"
+        ]
+    }
+]

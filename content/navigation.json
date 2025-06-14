@@ -1,0 +1,18 @@
+[
+    {
+        "type": "navigation_list",
+        "title": "Werk"
+        "items": [
+            {
+                "title": "Zeichnungen"
+            }
+        ]
+    },
+    {
+        "type": "navigation_list"
+        "title": "Ausstellungen",
+        "items": [
+
+        ]
+    }
+]

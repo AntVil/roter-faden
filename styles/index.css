@@ -1,0 +1,355 @@
+:root {
+    --theme-color-1: #333;
+    --theme-color-2: #eee;
+    --theme-color-3: #ddd;
+    --theme-color-4: #ccc;
+    --theme-color-5: #aaa;
+    --theme-color-6: #921;
+    --theme-color-7: #710;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-color-1: #eee;
+        --theme-color-2: #333;
+        --theme-color-3: #444;
+        --theme-color-4: #555;
+        --theme-color-5: #666;
+        --theme-color-6: #921;
+        --theme-color-7: #710;
+    }
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--theme-color-1);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color-scheme: light dark;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-y: auto;
+    height: 100svh;
+    background-color: var(--theme-color-2);
+    position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::after, *::before {
+        transition: none !important;
+    }
+}
+
+@media (width <= 750px) {
+    body {
+        grid-template-rows: 1fr;
+    }
+
+    header {
+        /* constants */
+        --button-size: 50px;
+        --button-padding: 10px;
+        --button-box-shadow: 5px;
+        --navigation-item-height: 50px;
+
+        --button-radius: calc(var(--button-size) / 2);
+        --button-center: calc(var(--button-radius) + var(--button-padding));
+        --element-size: calc(var(--button-size) + 2 * max(var(--button-padding), var(--button-box-shadow)));
+
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: var(--element-size);
+        height: var(--element-size);
+        background-color: #0000;
+        clip-path: circle(calc(var(--button-radius) + var(--button-box-shadow)) at var(--button-center) var(--button-center));
+        transition: clip-path 0.3s, width 0s 1s, height 0s 1s, background-color 0s 0.3s;
+        line-height: var(--navigation-item-height);
+        overflow-y: auto;
+        /* on mobile devices it usually not needed and in some cases might lead to back looking button */
+        scrollbar-width: none;
+        outline: none;
+
+        & * {
+            outline: inherit;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &>button {
+            position: relative;
+            margin-top: var(--button-padding);
+            margin-left: var(--button-padding);
+            width: var(--button-size);
+            height: var(--button-size);
+            background-color: var(--theme-color-2);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 0 var(--button-box-shadow) #000;
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--theme-color-4);
+                }
+            }
+
+            &:focus-visible {
+                background-color: var(--theme-color-4);
+            }
+
+            &:active {
+                background-color: var(--theme-color-5);
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 50%;
+                height: 1px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, calc(-50% - 5px)) rotate(0);
+                background-color: var(--theme-color-1);
+                transition: transform 0.5s;
+            }
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 50%;
+                height: 1px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, calc(-50% + 5px)) rotate(0);
+                background-color: var(--theme-color-1);
+                transition: transform 0.5s;
+            }
+        }
+
+        &:not(.mobile-view-open)>:not(button) {
+            display: none;
+        }
+
+        &.mobile-view-open {
+            width: 100svw;
+            height: 100svh;
+            background-color: var(--theme-color-2);
+            clip-path: circle(300% at var(--button-center) var(--button-center));
+            transition: clip-path 0.9s, width 0s 0s, height 0s 0s, background-color 0s 0s;
+
+            &>button {
+                --button-box-shadow: 0;
+
+                &::before {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                }
+                &::after {
+                    transform: translate(-50%, -50%) rotate(45deg);
+                }
+            }
+        }
+
+        &>nav {
+            display: grid;
+            margin: 0 30px;
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            height: min-content;
+            border-style: solid;
+            border-color: #0000 #0000 #0000 var(--theme-color-2);
+            border-width: 0 3px;
+
+            &.open {
+                border-left: 3px solid var(--theme-color-6);
+
+                &>button {
+                    background-color: var(--theme-color-3);
+                }
+            }
+
+            &>* {
+                border: none;
+                padding-left: 5px;
+                text-align: left;
+                line-height: inherit;
+            }
+
+            &>button {
+                cursor: pointer;
+                background-color: var(--theme-color-2);
+                transition: background-color 0.2s;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--theme-color-4);
+                    }
+                }
+
+                &:focus-visible {
+                    background-color: var(--theme-color-4);
+                }
+
+                &:active {
+                    background-color: var(--theme-color-5);
+                }
+            }
+
+            &>a {
+                background-color: var(--theme-color-2);
+                transition: background-color 0.2s;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--theme-color-4);
+                    }
+                }
+
+                &:focus-visible {
+                    background-color: var(--theme-color-4);
+                }
+            }
+
+            &:not(.open)>:not(button) {
+                display: none;
+            }
+        }
+
+        &>a {
+            display: block;
+            margin: 0 33px 0 30px;
+            padding-left: 5px;
+            background-color: var(--theme-color-2);
+            transition: background-color 0.2s;
+
+            @media (hover: hover) {
+                &:hover {
+                    background-color: var(--theme-color-4);
+                }
+            }
+
+            &:focus-visible {
+                background-color: var(--theme-color-4);
+            }
+        }
+    }
+}
+
+@media (width > 750px) {
+    header {
+        --header-height: 50px;
+        --header-item-width: 120px;
+        --header-item-height: 50px;
+        --header-border-width: 1px;
+
+        position: sticky;
+        top: 0;
+        background-color: var(--theme-color-2);
+        height: var(--header-height);
+        display: flex;
+        justify-content: right;
+        border-bottom: var(--header-border-width) solid var(--theme-color-1);
+
+        &>button {
+            display: none;
+        }
+
+        &>a {
+            min-width: var(--header-item-width);
+            /* avoid overlapping border of header */
+            height: calc(var(--header-height) - var(--header-border-width));
+            line-height: var(--header-height);
+            text-align: center;
+            transition: background-color 0.2s;
+
+            @media(hover: hover) {
+                &:hover {
+                    background-color: var(--theme-color-3);
+                }
+            }
+
+            &:focus-visible {
+                background-color: var(--theme-color-3);
+            }
+        }
+
+        &>nav {
+            display: grid;
+
+            &.open {
+                &>button {
+                    background-color: var(--theme-color-3);
+                }
+            }
+
+            &:not(:where(.open, :hover))>:not(button) {
+                display: none;
+            }
+
+            /* close on mobile devices after another click */
+            @media(hover: none) {
+                &:not(:where(.open))>:not(button) {
+                    display: none;
+                }
+            }
+
+            &>button {
+                min-width: var(--header-item-width);
+                /* avoid overlapping border of header */
+                height: calc(var(--header-height) - var(--header-border-width));
+                line-height: var(--header-height);
+                background-color: var(--theme-color-3);
+                text-align: center;
+                border: none;
+                background-color: #0000;
+                cursor: pointer;
+                transition: background-color 0.2s;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--theme-color-3);
+                    }
+                }
+
+                &:focus-visible {
+                    background-color: var(--theme-color-3);
+                }
+            }
+
+            &>a {
+                padding-left: 5px;
+                min-width: var(--header-item-width);
+                line-height: var(--header-item-height);
+                background-color: var(--theme-color-2);
+                border-style: solid;
+                border-width: 0 var(--header-border-width);
+                border-color: var(--theme-color-1);
+                transition: background-color 0.2s;
+
+                @media (hover: hover) {
+                    &:hover {
+                        background-color: var(--theme-color-3);
+                    }
+                }
+
+                &:focus-visible {
+                    background-color: var(--theme-color-3);
+                }
+
+                &:last-of-type {
+                    border-width: 0 var(--header-border-width) var(--header-border-width) var(--header-border-width);
+                }
+            }
+        }
+    }
+}
