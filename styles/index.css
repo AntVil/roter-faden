@@ -402,16 +402,24 @@ main {
     height: var(--line-element-size);
 
     &::before {
+        --size1: var(--line-margin);
+        --size2: calc(var(--line-margin) + var(--line-width));
+
         content: "";
         display: block;
         width: var(--line-element-size);
         background-color: var(--theme-color-6);
+        clip-path: shape(from var(--size1) 0, arc to 0 var(--size1) of var(--size1) cw, line to 0 var(--size2), arc to var(--size2) 0 of var(--size2), close);
     }
     &::after {
+        --size1: var(--line-margin);
+        --size2: calc(var(--line-margin) + var(--line-width));
+
         content: "";
         display: block;
         width: var(--line-element-size);
         background-color: var(--theme-color-6);
+        clip-path: shape(from var(--size1) 100%, arc to 100% var(--size1) of var(--size2) cw, line to 100% var(--size2), arc to var(--size2) 100% of var(--size1), close);
     }
 }
 
@@ -439,16 +447,24 @@ main {
     height: var(--line-element-size);
 
     &::before {
+        --size1: var(--line-margin);
+        --size2: calc(var(--line-margin) + var(--line-width));
+
         content: "";
         display: block;
         width: var(--line-element-size);
         background-color: var(--theme-color-6);
+        clip-path: shape(from var(--size1) 100%, arc to 0 var(--size2) of var(--size1), line to 0 var(--size1), arc to var(--size2) 100% of var(--size2) cw, close);
     }
     &::after {
+        --size1: var(--line-margin);
+        --size2: calc(var(--line-margin) + var(--line-width));
+
         content: "";
         display: block;
         width: var(--line-element-size);
         background-color: var(--theme-color-6);
+        clip-path: shape(from var(--size1) 0, arc to 100% var(--size2) of var(--size2), line to 100% var(--size1), arc to var(--size2) 0 of var(--size1) cw, close);
     }
 }
 
@@ -471,44 +487,60 @@ main {
 }
 
 .line-switch-left-to-right {
-    --left1: var(--line-element-size);
-    --left2: calc(100% - var(--line-element-size));
-    --top1: var(--line-margin);
-    --top2: calc(var(--line-margin) + var(--line-width));
+    --size1: var(--line-margin);
+    --size2: calc(var(--line-margin) + var(--line-width));
+
+    --left1: var(--line-margin);
+    --left2: calc(var(--line-margin) + var(--line-width));
+    --left3: var(--line-element-size);
+    --left4: calc(100% - var(--left3));
+    --left5: calc(100% - var(--left2));
+    --left6: calc(100% - var(--left1));
+    --top1: var(--left1);
+    --top2: var(--left2);
 
     display: flex;
     justify-content: space-between;
     height: var(--line-element-size);
     background-color: var(--theme-color-6);
-    clip-path: polygon(0 0, var(--left1) 0, var(--left1) var(--top1), var(--left2) var(--top1), var(--left2) 0, 100% 0, 100% 100%, var(--left2) 100%, var(--left2) var(--top2), var(--left1) var(--top2), var(--left1) 100%, 0 100%);
+    clip-path: shape(from var(--left1) 0, arc to var(--left3) var(--top2) of var(--size2), line to var(--left4) var(--top2), arc to var(--left5) 100% of var(--size1) cw, line to var(--left6) 100%, arc to var(--left4) var(--top1) of var(--size2), line to var(--left3) var(--top1), arc to var(--left2) 0 of var(--size1) cw);
 
+    /* NOTE: for now these don't do anything.. */
+    /*
     &::before {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
     &::after {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
+    */
 }
 
 .line-switch-right-to-center {
-    --left1: calc((100% - var(--line-element-size)) / 2);
-    --left2: calc((100% + var(--line-element-size)) / 2);
-    --left3: calc(100% - var(--line-element-size));
-    --top1: var(--line-margin);
-    --top2: calc(var(--line-margin) + var(--line-width));
+    --size1: var(--line-margin);
+    --size2: calc(var(--line-margin) + var(--line-width));
+
+    --left1: calc((100% - var(--line-element-size)) / 2 + var(--line-margin));
+    --left2: calc((100% - var(--line-element-size)) / 2 + calc(var(--line-margin) + var(--line-width)));
+    --left3: calc((100% + var(--line-element-size)) / 2);
+    --left4: calc(100% - var(--line-element-size));
+    --left5: calc(100% - (var(--line-margin) + var(--line-width)));
+    --left6: calc(100% - var(--line-margin));
+    --top1: calc(var(--line-margin) + var(--line-width));
+    --top2: var(--line-margin);
 
     position: relative;
     justify-content: space-between;
     height: var(--line-element-size);
     background-color: var(--theme-color-6);
-    clip-path: polygon(var(--left1) 0, var(--left2) 0, var(--left2) var(--top1), var(--left3) var(--top1), var(--left3) 0, 100% 0, 100% 100%, var(--left3) 100%, var(--left3) var(--top2), var(--left2) var(--top2), var(--left2) 100%, var(--left1) 100%);
+    clip-path: shape(from var(--left1) 100%, arc to var(--left3) var(--top2) of var(--size2) cw, line to var(--left4) var(--top2), arc to var(--left5) 0 of var(--size1), line to var(--left6) 0, arc to var(--left4) var(--top1) of var(--size2) cw, line to var(--left3) var(--top1), arc to var(--left2) 100% of var(--size1));
 
+    /* NOTE: for now these don't do anything.. */
+    /*
     &::before {
         content: "";
         display: block;
@@ -516,7 +548,6 @@ main {
         right: 0;
         width: var(--line-element-size);
         height: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
     &::after {
         content: "";
@@ -526,8 +557,8 @@ main {
         translate: -50% 0;
         width: var(--line-element-size);
         height: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
+    */
 }
 
 .bulletpoints-center-line {
@@ -593,17 +624,26 @@ main {
 }
 
 .line-switch-center-to-left {
-    --left1:var(--line-element-size);
-    --left2: calc((100% - var(--line-element-size)) / 2);
-    --left3: calc((100% + var(--line-element-size)) / 2);
-    --top1: var(--line-margin);
-    --top2: calc(var(--line-margin) + var(--line-width));
+    --size1: var(--line-margin);
+    --size2: calc(var(--line-margin) + var(--line-width));
+
+    --left1: calc(var(--line-margin));
+    --left2: calc(calc(var(--line-margin) + var(--line-width)));
+    --left3: calc(var(--line-element-size));
+    --left4: calc((100% - var(--line-element-size)) / 2);
+    --left5: calc((100% - var(--line-element-size)) / 2 + var(--line-margin));
+    --left6: calc((100% - var(--line-element-size)) / 2 + calc(var(--line-margin) + var(--line-width)));
+    --top1: calc(var(--line-margin) + var(--line-width));
+    --top2: var(--line-margin);
+
     display: flex;
     justify-content: space-between;
     height: var(--line-element-size);
     background-color: var(--theme-color-6);
-    clip-path: polygon(0 0, var(--left1) 0, var(--left1) var(--top1), var(--left2) var(--top1), var(--left2) 0, var(--left3) 0, var(--left3) 100%, var(--left2) 100%, var(--left2) var(--top2), var(--left1) var(--top2), var(--left1) 100%, 0 100%);
+    clip-path: shape(from var(--left1) 100%, arc to var(--left3) var(--top2) of var(--size2) cw, line to var(--left4) var(--top2), arc to var(--left5) 0 of var(--size1), line to var(--left6) 0, arc to var(--left4) var(--top1) of var(--size2) cw, line to var(--left3) var(--top1), arc to var(--left2) 100% of var(--size1));
 
+    /* NOTE: for now these don't do anything.. */
+    /*
     &::before {
         content: "";
         display: block;
@@ -616,4 +656,5 @@ main {
         width: var(--line-element-size);
         background-color: var(--theme-color-6);
     }
+    */
 }
