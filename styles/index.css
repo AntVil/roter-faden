@@ -4,8 +4,8 @@
     --theme-color-3: #ddd;
     --theme-color-4: #ccc;
     --theme-color-5: #aaa;
-    --theme-color-6: #921;
-    --theme-color-7: #710;
+    --theme-color-6: #c43;
+    --theme-color-7: #810;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -373,7 +373,6 @@ main {
 
 :root {
     --line-width: 5px;
-    --line-angle: 45deg;
     --line-margin: 10px;
     --line-element-size: calc(var(--line-width) + 2 * var(--line-margin));
 }
@@ -392,7 +391,7 @@ main {
         width: var(--line-width);
         height: 100%;
         margin: auto;
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     }
 }
 
@@ -408,7 +407,7 @@ main {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
         clip-path: shape(from var(--size1) 0, arc to 0 var(--size1) of var(--size1) cw, line to 0 var(--size2), arc to var(--size2) 0 of var(--size2), close);
     }
     &::after {
@@ -418,7 +417,7 @@ main {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
         clip-path: shape(from var(--size1) 100%, arc to 100% var(--size1) of var(--size2) cw, line to 100% var(--size2), arc to var(--size2) 100% of var(--size1), close);
     }
 }
@@ -437,7 +436,7 @@ main {
         width: var(--line-width);
         height: 100%;
         margin: auto;
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     }
 }
 
@@ -453,7 +452,7 @@ main {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
         clip-path: shape(from var(--size1) 100%, arc to 0 var(--size2) of var(--size1), line to 0 var(--size1), arc to var(--size2) 100% of var(--size2) cw, close);
     }
     &::after {
@@ -463,7 +462,7 @@ main {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
         clip-path: shape(from var(--size1) 0, arc to 100% var(--size2) of var(--size2), line to 100% var(--size1), arc to var(--size2) 0 of var(--size1) cw, close);
     }
 }
@@ -482,7 +481,7 @@ main {
         width: var(--line-width);
         height: 100%;
         margin: auto;
-        background-color: var(--theme-color-6);
+        background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     }
 }
 
@@ -502,7 +501,7 @@ main {
     display: flex;
     justify-content: space-between;
     height: var(--line-element-size);
-    background-color: var(--theme-color-6);
+    background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     clip-path: shape(from var(--left1) 0, arc to var(--left3) var(--top2) of var(--size2), line to var(--left4) var(--top2), arc to var(--left5) 100% of var(--size1) cw, line to var(--left6) 100%, arc to var(--left4) var(--top1) of var(--size2), line to var(--left3) var(--top1), arc to var(--left2) 0 of var(--size1) cw);
 
     /* NOTE: for now these don't do anything.. */
@@ -536,7 +535,7 @@ main {
     position: relative;
     justify-content: space-between;
     height: var(--line-element-size);
-    background-color: var(--theme-color-6);
+    background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     clip-path: shape(from var(--left1) 100%, arc to var(--left3) var(--top2) of var(--size2) cw, line to var(--left4) var(--top2), arc to var(--left5) 0 of var(--size1), line to var(--left6) 0, arc to var(--left4) var(--top1) of var(--size2) cw, line to var(--left3) var(--top1), arc to var(--left2) 100% of var(--size1));
 
     /* NOTE: for now these don't do anything.. */
@@ -567,7 +566,7 @@ main {
     &>ul {
         &:before {
             content: "";
-            background-color: var(--theme-color-6);
+            background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
             position: absolute;
             left: 50%;
             translate: -50% 0;
@@ -595,7 +594,8 @@ main {
                 position: absolute;
                 content: "";
                 display: block;
-                background-color: var(--theme-color-6);
+                background: linear-gradient(135deg, var(--theme-color-6) 25%, var(--theme-color-7) 75%);
+                background-color: var(--theme-color-7);
                 width: var(--line-element-size);
                 height: var(--line-element-size);
                 translate: calc(-1 * var(--line-element-size)) 0;
@@ -612,7 +612,7 @@ main {
                 right: 0;
                 content: "";
                 display: block;
-                background-color: var(--theme-color-6);
+                background: linear-gradient(135deg, var(--theme-color-6) 25%, var(--theme-color-7) 75%);
                 width: var(--line-element-size);
                 height: var(--line-element-size);
                 translate: var(--line-element-size) 0;
@@ -639,7 +639,7 @@ main {
     display: flex;
     justify-content: space-between;
     height: var(--line-element-size);
-    background-color: var(--theme-color-6);
+    background: repeating-linear-gradient(22.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
     clip-path: shape(from var(--left1) 100%, arc to var(--left3) var(--top2) of var(--size2) cw, line to var(--left4) var(--top2), arc to var(--left5) 0 of var(--size1), line to var(--left6) 0, arc to var(--left4) var(--top1) of var(--size2) cw, line to var(--left3) var(--top1), arc to var(--left2) 100% of var(--size1));
 
     /* NOTE: for now these don't do anything.. */
@@ -648,13 +648,11 @@ main {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
     &::after {
         content: "";
         display: block;
         width: var(--line-element-size);
-        background-color: var(--theme-color-6);
     }
     */
 }
