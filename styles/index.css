@@ -34,7 +34,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
     overflow-y: auto;
-    height: 100svh;
+    min-height: 100svh;
     background-color: var(--theme-color-2);
     position: relative;
 }
@@ -372,7 +372,7 @@ main {
 }
 
 :root {
-    --line-width: 5px;
+    --line-width: 7.5px;
     --line-margin: 10px;
     --line-element-size: calc(var(--line-width) + 2 * var(--line-margin));
 }
@@ -620,7 +620,35 @@ main {
             }
         }
     }
+}
 
+.image-center-line {
+    --line-padding: 8px;
+
+    position: relative;
+    padding: var(--line-padding) 0;
+    /* when image is not present this height might be too small */
+    min-height: var(--line-element-size);
+
+    &::before {
+        content: "";
+        background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
+        position: absolute;
+        left: 50%;
+        translate: -50% calc(-1 * var(--line-padding));
+        width: var(--line-width);
+        height: 100%;
+        z-index: -1;
+    }
+
+    &>img {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+        max-height: 100svh;
+        width: 100%;
+        object-fit: contain;
+    }
 }
 
 .line-switch-center-to-left {
@@ -655,4 +683,43 @@ main {
         width: var(--line-element-size);
     }
     */
+}
+
+.image-line-switch-left-right {
+    --size1: var(--line-margin);
+    --size2: calc(var(--line-margin) + var(--line-width));
+
+    --top1: calc((100% - var(--line-element-size)) / 2);
+    --top2: calc((100% - var(--line-width)) / 2);
+    --top3: calc((100% + var(--line-width)) / 2);
+    --top4: calc((100% + var(--line-element-size)) / 2);
+    --left1: var(--line-margin);
+    --left2: calc(var(--line-margin) + var(--line-width));
+    --left3: var(--line-element-size);
+    --left4: calc(100% - var(--left3));
+    --left5: calc(100% - var(--left2));
+    --left6: calc(100% - var(--left1));
+
+    position: relative;
+    /* when image is not present this height might be too small */
+    min-height: var(--line-element-size);
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        display: block;
+        background: repeating-linear-gradient(67.5deg, var(--theme-color-6) 0, var(--theme-color-7) 4px, var(--theme-color-6) 0);
+        clip-path: shape(from var(--left1) 0, line to var(--left1) var(--top1), arc to var(--left3) var(--top3) of var(--size2), line to var(--left4) var(--top3), arc to var(--left5) var(--top4) of var(--size2) cw, line to var(--left5) 100%, line to var(--left6) 100%, line to var(--left6) var(--top4), arc to var(--left4) var(--top2) of var(--size2), line to var(--left3) var(--top2), arc to var(--left2) var(--top1) of var(--size2) cw, line to var(--left2) 0);
+        z-index: -1;
+    }
+
+    &>img {
+        display: block;
+        max-width: calc(100% - 2 * var(--line-element-size));
+        max-height: 100svh;
+        width: 100%;
+        margin: auto;
+        object-fit: contain;
+    }
 }
